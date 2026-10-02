@@ -1,4 +1,3 @@
-function Footer() {
-        return ("Este es un Footer");
-    }
-    export default Footer;
+export function Footer() {
+  return <footer>Este es un Footer</footer>;
+}
