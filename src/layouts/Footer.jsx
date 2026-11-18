@@ -1,3 +1,11 @@
+import { portfolio } from '../data/portfolio'
+
 export function Footer() {
-  return <footer>Este es un Footer</footer>;
+  return (
+    <footer className="site-footer">
+      <p>
+        © {new Date().getFullYear()} {portfolio.shortName} · Santiago, Chile
+      </p>
+    </footer>
+  )
 }

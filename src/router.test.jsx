@@ -9,12 +9,27 @@ function renderAt(initialEntry) {
 }
 
 describe('router', () => {
-  it('renderiza HomePage en la raíz', () => {
+  it('renderiza el CV en la raíz', () => {
     renderAt('/')
     expect(
-      screen.getByRole('heading', { name: 'Get started' }),
+      screen.getByRole('heading', {
+        level: 1,
+        name: 'Darío Antonio Rojas Monsalvez',
+      }),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: 'Experiencia Laboral' }),
     ).toBeInTheDocument()
     expect(screen.getByRole('contentinfo')).toBeInTheDocument()
+  })
+
+  it('incluye las secciones y los datos del portafolio', () => {
+    renderAt('/')
+    expect(
+      screen.getByRole('heading', { name: 'Habilidades y Competencias' }),
+    ).toBeInTheDocument()
+    expect(screen.getByText('Ingeniería en informática')).toBeInTheDocument()
+    expect(screen.getByText('Inglés (Avanzado / C1)')).toBeInTheDocument()
   })
 
   it('renderiza 404 para rutas desconocidas dentro del layout', () => {

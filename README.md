@@ -1,6 +1,6 @@
 # Portafolio Darío Rojas
 
-Sitio personal / CV construido con **React 19 + Vite 8**, con React Compiler habilitado y despliegue automático a GitHub Pages.
+Sitio personal / CV construido con **React 19 + Vite 8**, con React Compiler habilitado y despliegue automático a GitHub Pages. El contenido (perfil, educación, habilidades y datos de contacto) está portado desde la versión estática de `docs/legacy/`.
 
 ## Requisitos
 
@@ -29,27 +29,29 @@ src/
 ├── App.css           # Estilos de la home
 ├── layouts/
 │   ├── Root.jsx      # Shell: Header + <main> + Footer (Outlet)
-│   ├── Header.jsx
+│   ├── Header.jsx    # Marca + navegación a las secciones del CV
 │   └── Footer.jsx
 ├── pages/
-│   ├── HomePage.jsx
+│   ├── HomePage.jsx  # CV: contacto, perfil, experiencia, educación, etc.
 │   ├── UserProfile.jsx
 │   └── NotFoundPage.jsx
 ├── hooks/
 │   └── useUserProfile.js   # Perfil de GitHub + guardar en localStorage
 ├── components/
+│   ├── Section.jsx   # Encabezado común de cada sección del CV
 │   ├── Spinner.jsx
 │   └── SaveButton.jsx
-├── test/
-│   └── setup.js      # Setup global de Vitest (jest-dom + cleanup)
-└── assets/
+├── data/
+│   └── portfolio.js  # Contenido del CV (fuente: docs/legacy/index.html)
+└── test/
+    └── setup.js      # Setup global de Vitest (jest-dom + cleanup)
 ```
 
 ## Rutas
 
 | Ruta               | Página                                        |
 | ------------------ | --------------------------------------------- |
-| `/`                | Home                                          |
+| `/`                | CV / portafolio (con anclas `#perfil`, etc.)  |
 | `/user/:username`  | Perfil (datos de la API pública de GitHub)    |
 | `*`                | 404 dentro del layout común                   |
 
@@ -70,4 +72,4 @@ Requisito único en el repo de GitHub: **Settings → Pages → Source = GitHub 
 
 ## `docs/legacy/`
 
-Carpeta con la versión anterior del sitio (HTML/CSS estático, previa a React). Se conserva solo como referencia histórica: tiene su propio `package.json` y no forma parte del build actual. No lo edites ni lo despliegues; el sitio real es el que se genera desde `src/`.
+Carpeta con la versión anterior del sitio (HTML/CSS estático, previa a React). Se conserva como referencia histórica y fuente del contenido que hoy vive en `src/data/portfolio.js`; tiene su propio `package.json` y no forma parte del build actual. No lo edites ni lo despliegues; el sitio real es el que se genera desde `src/`.
